@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Калькулятор</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<center>
+<body onkeydown ="KeyPrs(event)">
+<form name="Calcul" id="form1">
+    <table>
+    <tr>
+    <td>
+    	   <input type="text" name="EdField" size="16" class="display" readonly> 
+    </td>	
+    </tr>	
+    <tr>
+    <td class="buttons">
+    	<input type="button" name="one" value="1" Onclick="BtnPress(1)">
+    	<input type="button" name="two" value="2" Onclick="BtnPress(2)">
+    	<input type="button" name="thr" value="3" Onclick="BtnPress(3)">
+        <input type="button" name="summ" value="+" Onclick="Operation('+')">
+    	<br>
+    	<input type="button" name="four" value="4" Onclick="BtnPress(4)">
+        <input type="button" name="five" value="5" Onclick="BtnPress(5)">
+        <input type="button" name="six" value="6" Onclick="BtnPress(6)">
+        <input type="button" name="dif" value="-" Onclick="Operation('-')">
+        <br>
+        <input type="button" accesskey="7" name="seven" value="7" Onclick="BtnPress(7)">
+        <input type="button" accesskey="8" name="eight" value="8" Onclick="BtnPress(8)">
+        <input type="button" accesskey="9" name="nine" value="9" Onclick="BtnPress(9)">
+        <input type="button" accesskey="*" name="mult" value="x" Onclick="Operation('*')">
+        <br>
+        <input type="button" name="clear" value="C" Onclick="Clear()">
+        <input type="button" accesskey="0" name="zero" value="0" Onclick="BtnPress(0)">
+        <input type="button" accesskey="." name="dot" value="." Onclick="Dcm()">
+        <input type="button" accesskey="/" name="div" value="/" Onclick="Operation('/')">
+        <br>
+        <input type="button" name="eq" value="  =  " Onclick="Operation('=')">
+        <input type="button" name="chs" value="+/-" Onclick="chngSym()">
+        <input type="button" name="bcs" value="←" Onclick="BackSpc()">
+        <br>
+        
+    </td>
+    </tr>
+    </table> 
+</form>
+</body>
+</center>
+</html>
+<script type="text/javascript" src="script1.js"></script>
