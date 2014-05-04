@@ -36,11 +36,10 @@ function Operation(op) {
 }
 
 function Dcm() {
-    if (EmptyField == true){
+    if (EmptyField == true) {
         KeyPad.EdField.value = "0.";
         EmptyField = false;
-    }
-    else{
+    } else {
         if (KeyPad.EdField.value.indexOf(".") == -1)
             KeyPad.EdField.value+=".";
     }
@@ -60,7 +59,7 @@ function chngSym() {
 
 function BackSpc() {
     if (EmptyField);
-    else{
+    else {
     KeyPad.EdField.value = KeyPad.EdField.value.slice(0,-1);
     }
 }
