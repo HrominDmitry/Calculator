@@ -21,17 +21,16 @@ function Operation(op) {
     if (EmptyField && opr != '=');
     else{
         EmptyField = true;
-        if ( '+' ==  opr)
-            res+= parseFloat(KeyPad.EdField.value);
-        else if ('-' == opr)
-            res-= parseFloat(KeyPad.EdField.value);
-        else if ('*' == opr)
-            res*= parseFloat(KeyPad.EdField.value);
-        else if ('/' == opr)
-            res/= parseFloat(KeyPad.EdField.value);
-        else 
-            res = parseFloat(KeyPad.EdField.value);
+        if ( '+' ==  opr || '-' == opr || "*" == opr || '/' == opr ) {
+        var str = res.toString() + opr.toString() + KeyPad.EdField.value.toString();
+        res = eval(str);
+        } else 
+        res = parseFloat(KeyPad.EdField.value);
         KeyPad.EdField.value = res;
+         if (isNaN(res) || res == Infinity) {
+            KeyPad.EdField.value = "Error";
+            res = 0;
+        }
         opr = op;
         }
 }
@@ -72,23 +71,6 @@ function Check() {
 }
 
 function KeyPrs(event) {
-
-    if ((event.keyCode-48) >= 0 && (event.keyCode-48) <= 9) 
-        BtnPress(event.keyCode-48);
-    else if ((event.keyCode-96) >= 0 && (event.keyCode-96) <= 9) 
-        BtnPress(event.keyCode-96);
-    else if(event.keyCode == 109)
-        Operation('-');
-    else if(event.keyCode == 107)
-        Operation('+');
-    else if(event.keyCode == 106)
-        Operation('*');
-    else if(event.keyCode == 110)
-        Dcm();
-    else if(event.keyCode == 111)
-        Operation('/');
-    else if(event.keyCode == 8)
-        BackSpc();
-    else if(event.keyCode == 187)
-        Operation('=');
+    event.preventDefault();
+    document.getElementById(event.keyCode.toString()).click();
 }
