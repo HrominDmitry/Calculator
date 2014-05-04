@@ -27,7 +27,7 @@ function Operation(op) {
         } else 
         res = parseFloat(KeyPad.EdField.value);
         KeyPad.EdField.value = res;
-         if (isNaN(res) || res == Infinity) {
+        if (isNaN(res) || res == Infinity) {
             KeyPad.EdField.value = "Error";
             res = 0;
         }
@@ -59,7 +59,7 @@ function chngSym() {
 
 function BackSpc() {
     if (EmptyField);
-    else {
+    else{
     KeyPad.EdField.value = KeyPad.EdField.value.slice(0,-1);
     }
 }
@@ -70,6 +70,13 @@ function Check() {
 }
 
 function KeyPrs(event) {
+    var numl;
+
     event.preventDefault();
+    if (event.keyCode >= 96 && event.keyCode <= 105) {
+        numl = event.keyCode;
+        numl-=48;
+        document.getElementById(numl.toString()).click();
+    } else
     document.getElementById(event.keyCode.toString()).click();
 }
