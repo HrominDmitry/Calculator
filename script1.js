@@ -26,7 +26,11 @@ function Operation(op) {
         res = eval(str);
         } else 
         res = parseFloat(KeyPad.EdField.value);
-        KeyPad.EdField.value = res;
+        if (op == '=') {
+            KeyPad.EdHistory.value = '';
+        } else
+        KeyPad.EdHistory.value+= KeyPad.EdField.value+op;
+        KeyPad.EdField.value = res; 
         if (isNaN(res) || res == Infinity) {
             KeyPad.EdField.value = "Error";
             res = 0;
@@ -36,10 +40,11 @@ function Operation(op) {
 }
 
 function Dcm() {
-    if (EmptyField == true) {
+    if (EmptyField == true){
         KeyPad.EdField.value = "0.";
         EmptyField = false;
-    } else {
+    }
+    else{
         if (KeyPad.EdField.value.indexOf(".") == -1)
             KeyPad.EdField.value+=".";
     }
@@ -47,6 +52,7 @@ function Dcm() {
 
 function Clear() {
     KeyPad.EdField.value = "0";
+    KeyPad.EdHistory.value = '';
     EmptyField = true;
     res = 0;
 }
@@ -73,7 +79,7 @@ function KeyPrs(event) {
     var numl;
 
     event.preventDefault();
-    if (event.keyCode >= 96 && event.keyCode <= 105) {
+     if (event.keyCode >= 96 && event.keyCode <= 105) {
         numl = event.keyCode;
         numl-=48;
         document.getElementById(numl.toString()).click();
